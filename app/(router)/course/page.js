@@ -4,17 +4,17 @@ import CourseList from './_component/CourseList'
 
 function Course() {
     return (
-        <div className="p-5 grid grid-cols-1 md:grid-cols-3">
+        <div className="">
             {/* ----------------left container ------------------*/}
-            <div className="col-span-2">
-                <WelcomeBanner />
+            <div className="">
+                {/* <WelcomeBanner /> */}
                 <CourseList />
             </div>
 
             {/* ----------------right container -----------------*/}
-            <div className="">
+            {/* <div className="">
                 Right Selection
-            </div>
+            </div> */}
         </div>
     )
 }
