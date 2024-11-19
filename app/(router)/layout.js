@@ -1,5 +1,5 @@
 import React from "react";
-import SideNav from "./_component/SideNav";
+// import SideNav from "./_component/SideNav";
 import Header from "./_component/Header";
 
 function layout({ children }) {
