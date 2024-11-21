@@ -5,9 +5,6 @@ import Header from "./_component/Header";
 function layout({ children }) {
   return (
     <div>
-      {/* <div className="sm:w-64 sm:block hidden fixed">
-        <SideNav />
-      </div> */}
       <div className="">
         <Header />
         {children}
