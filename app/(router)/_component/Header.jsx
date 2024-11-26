@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { BellDot, Search, Menu, X } from "lucide-react";
+import {  Search, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -14,7 +14,7 @@ function Header() {
   };
 
   return (
-    <header className="bg-gray-900 p-5">
+    <header className="bg-[#0C0A20] py-5 px-10">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/">
@@ -26,12 +26,12 @@ function Header() {
           </Link>
         </div>
 
-        <div className="hidden lg:flex items-center p-2 w-[30%] rounded-xl bg-gray-200 text-black gap-2">
-          <Search className="h-5 w-5 text-indigo-800" />
+        <div className="hidden lg:flex items-center py-2 px-4 w-[30%] bg-[#749cf429] rounded-xl text-black gap-2">
+          <Search className="h-5 w-5 text-indigo-500" />
           <input
             type="text"
             placeholder="Search..."
-            className="bg-gray-200 text-black outline-none w-full"
+            className="bg-transparent text-black outline-none w-full"
           />
         </div>
 

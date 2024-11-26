@@ -2,7 +2,7 @@ import React from "react";
 // import SideNav from "./_component/SideNav";
 import Header from "./_component/Header";
 
-function layout({ children }) {
+function Home({ children }) {
   return (
     <div>
       <div className="">
@@ -13,4 +13,4 @@ function layout({ children }) {
   );
 }
 
-export default layout;
+export default Home;
