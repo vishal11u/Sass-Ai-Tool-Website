@@ -153,10 +153,12 @@ const HeroSection = () => {
           </div>
           <div className="flex items-center justify-center gap-2">
             <div className="flex -space-x-2">
-              {["https://saasaitools.com/wp-content/uploads/2024/08/sait_founders.webp"].map((i) => (
+              {[
+                "https://saasaitools.com/wp-content/uploads/2024/08/sait_founders.webp",
+              ].map((i) => (
                 <img
                   key={i}
-                  src={`${i}`} 
+                  src={`${i}`}
                   alt={`Image ${i}`}
                   className="w-full h-8"
                 />

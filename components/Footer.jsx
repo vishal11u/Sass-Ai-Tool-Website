@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Logo from "../public/assets/saasaitoolslogo.png";
 import Link from "next/link";
 import Image from "next/image";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const footerData = {
   categories: [
@@ -20,16 +23,49 @@ const footerData = {
     "Best AI Avatar Tools",
   ],
   resources: [
-    "SaaS Black Friday Deals 2024",
     "AI SaaS Blog",
     "AI Tool Directories",
     "AI Tips & Use Cases",
     "AI Forums",
   ],
-  contact: ["Contact us", "Advertise"],
+  contact: ["Contact us"],
 };
 
 const Footer = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [country, setCountry] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/contact/submit",
+        {
+          name,
+          email,
+          mobile,
+          country,
+        }
+      );
+
+      if (response.status === 200) {
+        router.refresh("/");
+      }
+    } catch (err) {
+      setError("Error submitting the form. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <footer className="bg-[#0C0A20] text-white py-12 px-14">
       <div className="flex items-center justify-between pb-5">
@@ -38,7 +74,7 @@ const Footer = () => {
         </Link>
         <div className="bg-[#e7ab6b21] backdrop-blur-sm px-6 py-2 rounded-xl flex items-center space-x-2">
           <span className="text-yellow-400 text-3xl">🏆</span>
-          <span className=" font-medium flex flex-col">
+          <span className="font-medium flex flex-col">
             <span className="text-[9px]">PRODUCT HUNT</span>
             #1 Product of the Day
           </span>
@@ -92,35 +128,56 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        {/* Logo and Categories */}
 
         {/* Newsletter Section */}
-        <div className="bg-[#749cf429] h-[80%] w-[90%] p-10 rounded-2xl">
+        <div className="bg-[#749cf429] h-[93%] w-[93%] p-10 rounded-2xl">
           <h4 className="font-bold text-xl mb-4">Join 15,000+ solopreneurs</h4>
           <p className="text-gray-400 text-xl mb-4">
-            Hey, I’m <strong className="text-white">Bren Kinfa 👋</strong>. I’m
-            the founder of SaaS AI Tools, the directory for AI & SaaS tools –
+            Hey, I’m <strong className="text-white">Vishal 👋</strong>. I’m the
+            founder of Best AI Tools, the directory for AI & SaaS tools –
             helping YOU stay ahead in SaaS & AI. Follow my journey and get
             notified when I release new resources and updates.
           </p>
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="flex space-x-2">
               <input
                 type="text"
                 placeholder="Enter your first name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="flex-1 px-4 py-4 bg-gray-800 text-white rounded-md focus:outline-none"
               />
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 px-4 py-4 bg-gray-800 text-white rounded-md focus:outline-none"
               />
             </div>
+            <div className="flex space-x-2">
+              <input
+                type="tel"
+                placeholder="Enter your mobile number"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+                className="flex-1 px-4 py-4 bg-gray-800 text-white rounded-md focus:outline-none"
+              />
+              <input
+                type="tel"
+                placeholder="Enter your Country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                className="flex-1 px-4 py-4 bg-gray-800 text-white rounded-md focus:outline-none"
+              />
+            </div>
+
+            {error && <p className="text-red-500 text-sm">{error}</p>}
             <button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 py-4 text-white rounded-3xl font-medium"
             >
-              Get Exclusive Insights & Resources
+              {loading ? "Submitting..." : "Get Exclusive Insights & Resources"}
             </button>
           </form>
         </div>
@@ -129,7 +186,7 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="mt-12 border-t border-gray-800 pt-6 text-sm flex flex-col md:flex-row justify-between items-center">
         <p className="text-gray-400">
-          Copyright © 2024 SaaS AI Tools. All Rights Reserved.
+          Copyright © 2024 Best AI Tools. All Rights Reserved.
         </p>
         <div className="flex space-x-4 text-gray-400 mt-4 md:mt-0">
           <a href="#" className="hover:text-white">
