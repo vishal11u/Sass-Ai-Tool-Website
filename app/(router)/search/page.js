@@ -1,12 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 function SearchResult() {
   const [aidata, setAidata] = useState([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
+  const router = useRouter();
 
   useEffect(() => {
     if (query) {
@@ -42,6 +43,7 @@ function SearchResult() {
           aidata.map((tool) => (
             <div
               key={tool._id}
+              onClick={() => router.push(`/tool-details/${tool._id}`)}
               className="bg-[#1D1B30] rounded-lg p-4 relative"
             >
               <div className="overflow-hidden h-44 rounded-md mb-4">

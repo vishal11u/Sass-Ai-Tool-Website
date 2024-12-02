@@ -3,17 +3,37 @@ import { Button } from "@/components/ui/button";
 import { Search, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../../public/assets/saasaitoolslogo.png";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/app/reduxAuth/slice/AuthSlice";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isClient, setIsClient] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const { isLoggedIn, user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push("/");
+    window.location.reload();
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen((prev) => !prev);
   };
 
   const handleSearch = (e) => {
@@ -49,18 +69,52 @@ function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-6">
-          <a className="font-medium text-white" href="/">
+          <a className="font-medium text-[15px] text-white" href="/">
             Explore
           </a>
-          <Link className="font-medium text-white" href="/submit">
+          <a
+            className="font-medium text-[15px] text-white"
+            href={isLoggedIn && isClient ? "/listing" : "/login"}
+          >
             + Submit
-          </Link>
-          <Button className="hover:bg-indigo-600 bg-gray-600 rounded-3xl text-[16px]">
-            Login
-          </Button>
-          <Button className="hover:bg-gray-700 bg-indigo-600 rounded-3xl text-[16px]">
-            Sign Up
-          </Button>
+          </a>
+          {isClient && !isLoggedIn ? (
+            <div className="flex items-center gap-x-3">
+              <a
+                href="/login"
+                className="hover:bg-indigo-600 bg-gray-600 text-white rounded-3xl py-1.5 px-5 text-[16px]"
+              >
+                Login
+              </a>
+              <a
+                href="/signup"
+                className="hover:bg-gray-700 bg-indigo-600 text-white rounded-3xl py-1.5 px-5 text-[16px]"
+              >
+                Sign Up
+              </a>
+            </div>
+          ) : null}
+          {isClient && isLoggedIn && (
+            <div className="relative border px-3 py-0.5 rounded-md">
+              <button
+                className="text-white font-medium text-[14px]"
+                onClick={toggleDropdown}
+              >
+                {user.role} ▼
+              </button>
+
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
+                  <button
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -114,16 +168,25 @@ function Header() {
           >
             Contact Us
           </Link>
-          <Button className="hover:bg-indigo-600 bg-gray-600 rounded-3xl text-[16px] w-full">
-            Login
-          </Button>
-          <Button className="hover:bg-gray-700 rounded-3xl text-[16px] w-full">
-            Sign Up
-          </Button>
+          {isClient && !isLoggedIn ? (
+            <>
+              <a
+                href="/login"
+                className="hover:bg-indigo-600 bg-gray-600 text-white rounded-3xl py-1.5 px-5 text-[16px]"
+              >
+                Login
+              </a>
+              <a
+                href="/signup"
+                className="hover:bg-gray-700 bg-indigo-600 text-white rounded-3xl py-1.5 px-5 text-[16px]"
+              >
+                Sign Up
+              </a>
+            </>
+          ) : null}
         </div>
       </div>
 
-      {/* Overlay for mobile menu when it's open */}
       {menuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"

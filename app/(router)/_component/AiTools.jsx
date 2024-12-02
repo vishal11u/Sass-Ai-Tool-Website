@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const categoriesImg = [
   "https://saasaitools.com/images/icons/iconimg01.png",
@@ -11,6 +12,7 @@ const categoriesImg = [
 ];
 
 const AiTools = () => {
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("All");
   const [categories, setCategories] = useState([]);
   const [aidata, setAidata] = useState([]);
@@ -123,7 +125,8 @@ const AiTools = () => {
             aidata.map((tool) => (
               <div
                 key={tool._id}
-                className="bg-[#1D1B30] rounded-lg p-4 relative"
+                onClick={() => router.push(`/tool-details/${tool._id}`)}
+                className="bg-[#1D1B30] cursor-pointer rounded-lg p-4 relative"
               >
                 <div className="overflow-hidden h-44 rounded-md">
                   <img

@@ -80,7 +80,7 @@ const Footer = () => {
           </span>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t-2 border-[#282369] pt-8">
+      <div className="grid grid-cols-0 md:grid-cols-2 gap-8 border-t-2 border-[#282369] pt-8">
         <div className="grid grid-cols-3">
           <div>
             <h3 className="font-bold text-lg mb-4 flex items-center space-x-2">
@@ -130,7 +130,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="bg-[#749cf429] h-[93%] w-[93%] p-10 rounded-2xl">
+        <div className="bg-[#749cf429] md:h-[93%] w-[93%] p-10 rounded-2xl">
           <h4 className="font-bold text-xl mb-4">Join 15,000+ solopreneurs</h4>
           <p className="text-gray-400 text-xl mb-4">
             Hey, I’m <strong className="text-white">Vishal 👋</strong>. I’m the
@@ -139,7 +139,7 @@ const Footer = () => {
             notified when I release new resources and updates.
           </p>
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="flex space-x-2">
+            <div className="flex flex-col md:flex-row md:space-x-2">
               <input
                 type="text"
                 placeholder="Enter your first name"
@@ -155,7 +155,7 @@ const Footer = () => {
                 className="flex-1 px-4 py-4 bg-gray-800 text-white rounded-md focus:outline-none"
               />
             </div>
-            <div className="flex space-x-2">
+            <div className="flex flex-col md:flex-row md:space-x-2">
               <input
                 type="tel"
                 placeholder="Enter your mobile number"
