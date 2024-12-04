@@ -6,7 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 
-const Register = ({ setRegister }) => {
+const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -53,7 +53,6 @@ const Register = ({ setRegister }) => {
   };
 
   const handleNavigateToLogin = () => {
-    setRegister(false);
     navigate.push("/login");
   };
 
@@ -113,12 +112,12 @@ const Register = ({ setRegister }) => {
           </div>
         </form>
         <div className="mt-6">
-          <p className="text-center text-sm text-gray-600">
+          <p className="text-center text-sm text-gray-400">
             Already have an account?{" "}
             <a
               href="/login"
               onClick={handleNavigateToLogin}
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium text-white underline hover:text-indigo-500"
             >
               Log in
             </a>

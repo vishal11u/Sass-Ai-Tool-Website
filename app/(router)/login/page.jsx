@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-const LoginPage = ({ setRegister }) => {
+const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,8 +28,7 @@ const LoginPage = ({ setRegister }) => {
   };
 
   const handleClick = () => {
-    setRegister(true);
-    navigate("/register");
+    navigate.push("/signup");
   };
 
   useEffect(() => {
@@ -100,15 +99,15 @@ const LoginPage = ({ setRegister }) => {
           </div>
         </form>
         <div className="-mt-0">
-          <p className="text-center text-sm text-gray-600">
+          <p className="text-center text-sm text-gray-400">
             Don't have an account?{" "}
-            <button
-              type="button"
+            <a
+              href="/signup"
               onClick={handleClick}
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium text-white underline hover:text-indigo-500"
             >
               Sign up
-            </button>
+            </a>
           </p>
         </div>
       </div>
