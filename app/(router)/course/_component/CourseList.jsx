@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const LogoItem = ({ src, alt }) => (
   <motion.div
@@ -99,6 +100,13 @@ const MovingLogosRow = ({ direction = "left", className = "" }) => {
 };
 
 const HeroSection = () => {
+  const [isClient, setIsClient] = useState(false);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0C0A20] text-white relative overflow-hidden">
       {/* Background logo rows */}
@@ -133,9 +141,12 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col md:flex-row gap-6 justify-center">
-            <button className="bg-indigo-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-colors text-lg">
+            <a
+              href={isLoggedIn && isClient ? "/listing" : "/login"}
+              className="bg-indigo-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-colors text-lg"
+            >
               Submit your AI tool
-            </button>
+            </a>
             <button className="bg-gray-800/90 backdrop-blur-sm hover:bg-gray-700 text-white px-8 py-4 rounded-full font-medium transition-colors text-lg">
               Join our AI community
             </button>

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Logo from "../../../public/assets/saasaitoolslogo.png";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,11 +36,14 @@ function Header() {
     setDropdownOpen((prev) => !prev);
   };
 
-  const handleSearch = (e) => {
-    if (e.key === "Enter" && searchQuery.trim()) {
-      router.push(`/search?query=${searchQuery.trim()}`);
-    }
-  };
+  const handleSearch = useCallback(
+    (e) => {
+      if (e.key === "Enter" && searchQuery.trim()) {
+        router.push(`/search?query=${searchQuery.trim()}`);
+      }
+    },
+    [searchQuery]
+  );
 
   return (
     <header className="bg-[#0C0A20] py-5 px-10 sticky z-50 left-0 top-0">
