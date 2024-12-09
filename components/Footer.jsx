@@ -47,7 +47,7 @@ const Footer = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/contact/submit",
+        "https://best-aitool-backend.vercel.app/contact/submit",
         {
           name,
           email,
