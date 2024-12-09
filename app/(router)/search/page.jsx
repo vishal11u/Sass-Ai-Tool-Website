@@ -34,7 +34,7 @@ function SearchResult() {
       <h2 className="text-white text-[38px] font-bold pb-5">
         Search results for "{query}"
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
         {loading ? (
           <p className="text-white text-center flex items-center justify-center">
             Loading...
