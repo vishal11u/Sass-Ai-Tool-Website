@@ -4,7 +4,7 @@ import { Search, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import Logo from "../../../public/assets/saasaitoolslogo.png";
+import Logo from "../../../public/favicon.png";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/app/reduxAuth/slice/AuthSlice";
@@ -20,7 +20,7 @@ function Header() {
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
+  }, [isLoggedIn]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -49,12 +49,15 @@ function Header() {
     <header className="bg-[#0C0A20] py-5 px-10 sticky z-50 left-0 top-0">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link href="/">
+          <Link href="/" className="flex items-center text-white gap-x-2">
             <Image
               className="h-10 w-auto"
               src={Logo}
               alt="SaaS AI Tools Logo"
             />
+            <h3 className="text-[22px] font-semibold">
+              Best <span className="text-indigo-500">AI</span> Tools
+            </h3>
           </Link>
         </div>
 
@@ -114,6 +117,14 @@ function Header() {
                   >
                     Logout
                   </button>
+                  {user.role === "superAdmin" && isLoggedIn && (
+                    <a
+                      href="https://bestaitools-dashboard.vercel.app/"
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Dashboard
+                    </a>
+                  )}
                 </div>
               )}
             </div>
@@ -159,7 +170,7 @@ function Header() {
           </Link>
           <Link
             className="font-medium text-white"
-            href="/submit"
+            href={isLoggedIn && isClient ? "/listing" : "/login"}
             onClick={toggleMenu}
           >
             + Submit

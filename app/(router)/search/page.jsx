@@ -14,7 +14,7 @@ function SearchResult() {
       const fetchData = async () => {
         try {
           const response = await fetch(
-            `http://localhost:5000/aitools/search?query=${query}`
+            `https://best-aitool-backend.vercel.app/aitools/search?query=${query}`
           );
           const data = await response.json();
           setAidata(data.results);

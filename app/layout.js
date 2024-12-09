@@ -15,8 +15,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-const canonicalUrl = "https://bestaitool.com";
-
 export const metadata = {
   title: "Explore the Best AI Tools for Your Business Needs",
   description:
@@ -26,10 +24,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="canonical" href={canonicalUrl} />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

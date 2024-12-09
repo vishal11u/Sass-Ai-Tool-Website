@@ -21,7 +21,9 @@ const AiTools = () => {
   const fetchAiData = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/aitools");
+      const res = await axios.get(
+        "https://best-aitool-backend.vercel.app/aitools"
+      );
       const tools = res.data;
 
       const uniqueCategories = [
@@ -48,8 +50,8 @@ const AiTools = () => {
     try {
       const endpoint =
         category === "All"
-          ? "http://localhost:5000/aitools"
-          : `http://localhost:5000/aitools/filter?category=${encodeURIComponent(
+          ? "https://best-aitool-backend.vercel.app/aitools"
+          : `https://best-aitool-backend.vercel.app/aitools/filter?category=${encodeURIComponent(
               category
             )}`;
       const res = await axios.get(endpoint);
@@ -151,6 +153,28 @@ const AiTools = () => {
             </p>
           )}
         </div>
+      </div>
+      <div className="text-white text-center pt-20">
+        <h2 className="text-[60px] font-semibold">Best AI Tools in 2024</h2>
+        <h3 className="text-[20px]">It helps to you make works to esier</h3>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+        }}
+      >
+        <iframe
+          width="90%"
+          height="80%"
+          src="https://www.youtube.com/embed/-Aw37UyTK7w"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const ToolDetails = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `http://localhost:5000/aitools/getbyId/${id}`
+          `https://best-aitool-backend.vercel.app/aitools/getbyId/${id}`
         );
         setTool(res.data);
       } catch (err) {

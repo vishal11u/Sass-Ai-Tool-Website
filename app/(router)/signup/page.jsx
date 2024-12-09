@@ -33,7 +33,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/auth/signup", {
+      await axios.post("https://best-aitool-backend.vercel.app/auth/signup", {
         username,
         password,
         confirmPassword,

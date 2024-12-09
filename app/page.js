@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSection from "./(router)/course/_component/CourseList";
+import HeroSection from "./(router)/course/CourseList";
 import AiTools from "./(router)/_component/AiTools";
 
 function page() {

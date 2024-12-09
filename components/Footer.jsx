@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Logo from "../public/assets/saasaitoolslogo.png";
+import Logo from "../public/favicon.png";
 import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
@@ -67,10 +67,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0C0A20] text-white py-12 px-14">
-      <div className="flex items-center justify-between pb-5">
-        <Link href="/">
+    <footer className="bg-[#0C0A20] text-white py-8 px-14">
+      <div className="flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-between pb-5">
+        <Link href="/" className="flex items-center text-white gap-x-2">
           <Image className="h-10 w-auto" src={Logo} alt="SaaS AI Tools Logo" />
+          <h3 className="text-[22px] font-semibold">
+            Best <span className="text-indigo-500">AI</span> Tools
+          </h3>
         </Link>
         <div className="bg-[#e7ab6b21] backdrop-blur-sm px-6 py-2 rounded-xl flex items-center space-x-2">
           <span className="text-yellow-400 text-3xl">🏆</span>
@@ -139,7 +142,7 @@ const Footer = () => {
             notified when I release new resources and updates.
           </p>
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="flex flex-col md:flex-row md:space-x-2">
+            <div className="flex gap-4 md:gap-0 flex-col md:flex-row md:space-x-2">
               <input
                 type="text"
                 placeholder="Enter your first name"
@@ -155,7 +158,7 @@ const Footer = () => {
                 className="flex-1 px-4 py-4 bg-gray-800 text-white rounded-md focus:outline-none"
               />
             </div>
-            <div className="flex flex-col md:flex-row md:space-x-2">
+            <div className="flex flex-col gap-4 md:gap-0 md:flex-row md:space-x-2">
               <input
                 type="tel"
                 placeholder="Enter your mobile number"
@@ -184,24 +187,10 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-12 border-t border-gray-800 pt-6 text-sm flex flex-col md:flex-row justify-between items-center">
+      <div className="mt-12 border-t border-gray-800 pt-6 text-sm flex justify-center items-center">
         <p className="text-gray-400">
           Copyright © 2024 Best AI Tools. All Rights Reserved.
         </p>
-        <div className="flex space-x-4 text-gray-400 mt-4 md:mt-0">
-          <a href="#" className="hover:text-white">
-            Privacy Policy
-          </a>
-          <a href="#" className="hover:text-white">
-            Terms
-          </a>
-          <a href="#" className="hover:text-white">
-            Disclaimer
-          </a>
-          <a href="#" className="hover:text-white">
-            DMCA
-          </a>
-        </div>
       </div>
     </footer>
   );
