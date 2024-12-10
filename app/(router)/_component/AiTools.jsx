@@ -5,10 +5,11 @@ import { useRouter } from "next/navigation";
 
 const categoriesImg = [
   "https://saasaitools.com/images/icons/iconimg01.png",
-  "https://saasaitools.com/images/icons/iconimg02.png",
-  "https://saasaitools.com/images/icons/iconimg03.png",
-  "https://saasaitools.com/images/icons/iconimg04.png",
-  "https://saasaitools.com/images/icons/iconimg05.png",
+  "https://saasaitools.com/images/icons/iconimg21.png",
+  "https://saasaitools.com/images/icons/iconimg10.png",
+  "https://saasaitools.com/images/icons/iconimg30.png",
+  "	https://saasaitools.com/images/icons/iconimg07.png",
+  "https://saasaitools.com/images/icons/iconimg26.png",
 ];
 
 const AiTools = () => {
@@ -92,9 +93,12 @@ const AiTools = () => {
               tools – helping you stay ahead in SaaS & AI. Follow my journey and
               get notified when I release new resources and updates.
             </p>
-            <button className="text-center py-2 w-full rounded-2xl text-[.9em] bg-indigo-500 text-white font-medium mt-3">
-              Follow me on X
-            </button>
+            <a
+              href="https://github.com/vishal11u"
+              className="text-center py-2 w-full rounded-2xl text-[.9em] bg-indigo-500 text-white font-medium mt-3"
+            >
+              Follow me on Github
+            </a>
           </div>
           <div className="flex flex-col items-cente bg-[#1D1B30] rounded-lg p-6">
             <h3 className="text-sm font-bold text-white">Categories</h3>
