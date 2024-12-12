@@ -110,7 +110,7 @@ function Header() {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
+                <div className="absolute right-0 mt-2 w-40 bg-white rounded-md overflow-hidden shadow-lg z-10">
                   <button
                     className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     onClick={handleLogout}
@@ -125,6 +125,12 @@ function Header() {
                       Dashboard
                     </a>
                   )}
+                  <a
+                    href="/watchlist"
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Watchlist
+                  </a>
                 </div>
               )}
             </div>

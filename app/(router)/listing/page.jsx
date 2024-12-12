@@ -5,8 +5,10 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import { toast } from "sonner";
 import app from "../../../lib/FirebaseConfigue";
+import { useRouter } from "next/navigation";
 
 const AddNewCard = ({ editData }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     productName: editData?.productName || "",
     category: editData?.category || "",
@@ -22,7 +24,6 @@ const AddNewCard = ({ editData }) => {
 
   const [uploading, setUploading] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
-  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,7 +49,6 @@ const AddNewCard = ({ editData }) => {
     }
 
     setUploading(true);
-    setError(null);
 
     try {
       const storage = getStorage(app);
@@ -75,7 +75,7 @@ const AddNewCard = ({ editData }) => {
           }
         );
         console.log(response.data);
-        toast.success("Card updated successfully!");
+        alert("Card updated successfully!");
       } else {
         const response = await axios.post(
           "https://best-aitool-backend.vercel.app/aitools/save",
@@ -89,9 +89,9 @@ const AddNewCard = ({ editData }) => {
       }
 
       resetForm();
+      router.push("/");
     } catch (error) {
       console.error("Error uploading image:", error);
-      setError("Failed to upload image. Please try again.");
     } finally {
       setUploading(false);
     }
@@ -198,7 +198,6 @@ const AddNewCard = ({ editData }) => {
               Change Image
             </button>
           )}
-          {error && <p className="error-text">{error}</p>}
         </div>
         <Button
           type="submit"
