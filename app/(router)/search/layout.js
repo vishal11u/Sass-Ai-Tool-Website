@@ -4,6 +4,8 @@ export const metadata = {
     "Log in to your account to access personalized features and services. Secure and easy access.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function SearchLayout({ children }) {
   return <main>{children}</main>;
 }
