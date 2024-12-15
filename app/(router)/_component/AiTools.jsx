@@ -206,6 +206,28 @@ const AiTools = () => {
           )}
         </div>
       </div>
+      <div className="text-white text-center pt-20">
+        <h2 className="text-[60px] font-semibold">Best AI Tools in 2024</h2>
+        <h3 className="text-[20px]">It helps to you make works to esier</h3>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+        }}
+      >
+        <iframe
+          width="90%"
+          height="80%"
+          src="https://www.youtube.com/embed/-Aw37UyTK7w"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
     </div>
   );
 };
